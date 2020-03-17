@@ -18,7 +18,7 @@
     </header>
 
     <!--Main screen-->
-    <div class="conatiner mt-5">
+    <div class="conatiner mt-5" id="homePage">
         <div class="row justify-content-center mt5 pt-3 pb-3">
             <div class="col-10 col-lg-8 text-center">
                 <h1>JavaScript Code Quiz</h1>
@@ -33,9 +33,11 @@
 
     
     <!-- questions and answers will be contained here -->
-    <div class="conatiner mt-5">
+    
+    <!-- d-none class hides the element in bootstrap -->
+    <div class="conatiner mt-5 d-none" id="questions">
         <div class="row justify-content-center mt5 pt-3 pb-3">
-            <div class="col-10 col-lg-8 text-center questionsDiv">
+            <div class="col-10 col-lg-8 text-center">
                 <h2 id="questionText" class="mb-4">Question</h2>
                 <ul id="answerText" class="list-unstyled">
                     <li class="answerchoice">1</li>
@@ -43,14 +45,16 @@
                     <li class="answerchoice">3</li>
                     <li class="answerchoice">4</li>
                 </ul>
-                <p class="submit"></p>
+                <p id="correct?"></p>
             </div>
         </div>
     </div>
 
 
     <!-- enter highscore screen-->
-    <div class="conatiner mt-5">
+
+    <!-- d-none hides element in bootstrap -->
+    <div class="conatiner mt-5 d-none" id="scores">
         <div class="row justify-content-center mt5 pt-3 pb-3">
             <div class="col-10 col-lg-8">
                 <h2>Times Up!</h2>

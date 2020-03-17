@@ -46,20 +46,70 @@ $(document).ready(function() {
 
     var answerTextEl = document.getElementById("answerText");
 
+    // need to set this as -1 so that when we add it starts on the first question in the array [0] 
+    questionNumber = -1
+
+
     function startTimer() {
+
+        document.getElementById("homePage").classList.add("d-none");
+        document.getElementById("questions").classList.remove("d-none");
+
         var timeLeft = setInterval(function() {
             secondsLeft--;
             console.log("tick")
             timerEl.textContent = "Time: " + secondsLeft;
             
-            if (secondsLeft === 0) {
-
+            if (secondsLeft === 0 || questionNumber === questions.length) {
                 clearInterval(timeLeft);
                 setTimeout(showFinalScore);
-
             }
         }, 1000);
+
+        displayQuestion();
+
     }
+
+    function displayQuestion() {
+        questionNumber++;
+
+        // index the questions array for the tite based on the questionNumber that we are on and create the question text
+        questionTextEl.textContent = questions[questionNumber].title
+        answerTextEl.innerHTML = "";
+
+        //index the questions array for the answer based on what question we are on
+        answer = questions[questionNumber].answer;
+
+        var choices = questions[questionNumber].choices;
+
+        for (i = 0; i < choices.length; i++) {
+            var nextChoice = document.createElement("button");
+
+            nextChoice.textContent = choices[i];
+            answerBtn = answerTextEl.appendChild(nextChoice).setAttribute("class", "p-3 btn btn-light");
+        }
+        console.log(choices);
+    }
+
+    function showFinalScore() {
+        document.getElementById("questions").classList.add("d-none");
+        document.getElementById("scores").classList.remove("d-none");
+    }
+
+    answerTextEl.addEventListener("click", function(event) {
+        var rightWrong = document.getElementById("correct?");
+
+        if (answer === event.target.textContent) {
+            rightWrong.innerHTML = "Correct!";
+        }
+        else {
+            rightWrong.innerHTML = "Incorrect!";
+            secondsLeft = secondsLeft - 10;
+        }
+        
+        displayQuestion();
+    
+    })
     
     startBtn.addEventListener("click", startTimer);
 
