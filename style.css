@@ -1,4 +1,19 @@
-.container {
-    margin: 10px;
-    padding: 10px;
+header {
+    background-color: teal;
+}
+
+#timer {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+#highscores {
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 20px;
+    color: orange
+}
+
+#highscores:hover {
+    color: grey;
 }
