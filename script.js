@@ -34,39 +34,34 @@ $(document).ready(function() {
         },
     ];
 
+    var startBtn = document.getElementById("startBtn");
+
+    var submitBtn = document.querySelector(".submitBtn");
+    
     var secondsLeft = 75;
 
+    var timerEl = document.getElementById("timer");
+
+    var questionTextEl = document.getElementById("questionText");
+
+    var answerTextEl = document.getElementById("answerText");
+
     function startTimer() {
-        setInterval(function() {
+        var timeLeft = setInterval(function() {
             secondsLeft--;
             console.log("tick")
-            if (secondsLeft > 0) {
-                $(".timer").text("Timer: " + secondsLeft);
+            timerEl.textContent = "Time: " + secondsLeft;
+            
+            if (secondsLeft === 0) {
+
+                clearInterval(timeLeft);
+                setTimeout(showFinalScore);
+
             }
         }, 1000);
     }
-
-    function startQuestions() {
-        $(".question").text("Commonly used data types do not include:");
-        $(".questionContent").empty();
-        
-        var answers1 = ["1. strings", "2. booleans", "3. alerts", "4. numbers"];
-        console.log(answers);
-
-        var i; for (i = 0; i < answers1.length; i++) {
-            var answerBtn = $("<button>");
-            answerBtn.text(answers[i]);
-            $(".questionContent").append(answerBtn);
-        }
-
-
-    }
     
-    $(".start").click(function() {
-        console.log("click");
-        startTimer();
-        startQuestions();
-    })
+    startBtn.addEventListener("click", startTimer);
 
 
 
@@ -76,11 +71,3 @@ $(document).ready(function() {
 
 
 });
-
-// create another event inside of that "event listener" for the start button.
-// brings up question when clicked 
-// if correct button is pressed move to next questions
-// --if incorrect button is pressed move to next questions + take away 10 seconds
-// when the end of the questions are reached, create stop timer function
-// when stop timer function is run the current secondsLeft should be added ot the "high scores div" and saved in local storage
-// figure out how to have the high scores order from highest to lowest 
