@@ -16,24 +16,35 @@
         <a id=highscores href="highscores.html">High Scores</a>
         <div id="timer" class="float-right mr-2">Time: 0</div>
     </header>
-    
-    
-    <div class="conatiner">
 
-        <div class="row">
-            <div class="col-4"></div>
-            <div class="col-4 questions-div">
-                <div class="questionTitle">
-                    <h1 class="question">Coding Quiz Challenge</h1>
-                </div>
-                <div class="questionContent">
-                    <p>Welcome to the coding quiz challenge! Try and answer the following javascript questions as fast as you can. But be careful, wrong answers will decrease the timer by 10 sconds. Enter your initials at the end to record your high score. </p>
-                </div>
-                <div class="buttons-div">
-                    <button class="start btn btn-dark btn-lg">Start Quiz</button>
-                </div>
+    <!--Main screen-->
+    <div class="conatiner mt-5">
+        <div class="row justify-content-center mt5 pt-3 pb-3">
+            <div class="col-10 col-lg-8 text-center">
+                <h1>JavaScript Code Quiz</h1>
+                <p>Answer the questions blow as quickly as possible. You have 75 seconds to complete the quiz. When you're finished, enter your name to record your score!
+                <br>
+                <strong>BEWARE:</strong> If you get one wrong, you'll lose 10 seconds! </p>
+                <br>
+                <button type="button" id="startBtn" class="btn btn-lg btn-dark">Start</button>
             </div>
-            <div class="col-4"></div>
+        </div>
+    </div>
+
+    
+    <!-- questions and answers will be contained here -->
+    <div class="conatiner mt-5">
+        <div class="row justify-content-center mt5 pt-3 pb-3">
+            <div class="col-10 col-lg-8 text-center questionsDiv">
+                <h2 id="questionText" class="mb-4">Question</h2>
+                <ul id="answerText" class="list-unstyled">
+                    <li class="answerchoice">1</li>
+                    <li class="answerchoice">2</li>
+                    <li class="answerchoice">3</li>
+                    <li class="answerchoice">4</li>
+                </ul>
+                <p class="submit"></p>
+            </div>
         </div>
     </div>
     
