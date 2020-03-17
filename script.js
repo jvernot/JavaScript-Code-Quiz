@@ -46,6 +46,8 @@ $(document).ready(function() {
 
     var answerTextEl = document.getElementById("answerText");
 
+    var userScoreEl = document.getElementById("userScore");
+
     // need to set this as -1 so that when we add it starts on the first question in the array [0] 
     questionNumber = -1
 
@@ -91,9 +93,18 @@ $(document).ready(function() {
         console.log(choices);
     }
 
+    function hideCorrect() {
+        document.getElementById("correct?").classList.add("d-none");
+    }
+
+    function showCorrect() {
+        document.getElementById("correct?").classList.remove("d-none");
+    }
+
     function showFinalScore() {
         document.getElementById("questions").classList.add("d-none");
         document.getElementById("scores").classList.remove("d-none");
+        userScoreEl.textContent = "Your score is: " + secondsLeft;
     }
 
     answerTextEl.addEventListener("click", function(event) {
@@ -101,10 +112,15 @@ $(document).ready(function() {
 
         if (answer === event.target.textContent) {
             rightWrong.innerHTML = "Correct!";
+            setTimeout(hideCorrect, 1000);
+            showCorrect();
         }
         else {
             rightWrong.innerHTML = "Incorrect!";
+            setTimeout(hideCorrect, 1000)
             secondsLeft = secondsLeft - 10;
+            showCorrect();
+
         }
         
         displayQuestion();
