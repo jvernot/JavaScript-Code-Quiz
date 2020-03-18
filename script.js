@@ -48,6 +48,8 @@ $(document).ready(function() {
 
     var userScoreEl = document.getElementById("userScore");
 
+    var userNameEl;
+
     // need to set this as -1 so that when we add it starts on the first question in the array [0] 
     questionNumber = -1
 
@@ -90,7 +92,6 @@ $(document).ready(function() {
             nextChoice.textContent = choices[i];
             answerBtn = answerTextEl.appendChild(nextChoice).setAttribute("class", "p-3 btn btn-light");
         }
-        console.log(choices);
     }
 
     function hideCorrect() {
@@ -107,7 +108,7 @@ $(document).ready(function() {
         userScoreEl.textContent = "Your score is: " + secondsLeft;
     }
 
-    answerTextEl.addEventListener("click", function(event) {
+    answerTextEl.addEventListener("click", function() {
         var rightWrong = document.getElementById("correct?");
 
         if (answer === event.target.textContent) {
@@ -126,14 +127,26 @@ $(document).ready(function() {
         displayQuestion();
     
     })
+
+    submitBtn.addEventListener("click", function() {
+        userNameEl = document.getElementById("userName").value
+
+        var newScore = {
+            name: userNameEl,
+            score: secondsLeft
+        };
+
+        var highScores = JSON.parse(localStorage.getItem("highScores") || "[]");
+
+        highScores.push(newScore);
+
+        localStorage.setItem("highScores", JSON.stringify(highscores));
+
+        console.log(highScores);
+
+    })
     
     startBtn.addEventListener("click", startTimer);
-
-
-
-
-
-
 
 
 });
